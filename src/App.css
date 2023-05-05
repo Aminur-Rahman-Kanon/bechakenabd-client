@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+
+.App {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  background: lightgray;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ad6c4d;
+  border-radius: 10px;
+}
