@@ -31,7 +31,7 @@ const Navbar = () => {
                         </a>
                     </li>
                     <li className={styles.navList}>
-                        <a href="products/latestItem" className={location === '/products/latestItem' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
+                        <a href="/products/latestItem" className={location === '/products/latestItem' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
                             <FontAwesomeIcon icon={faStore} className={styles.navIcon} />
                             <span className={styles.navP}>Latest</span>
                         </a>
@@ -102,7 +102,7 @@ const Navbar = () => {
             <div className={styles.navElements}>
                 <ul className={styles.navElement} id={styles.rightElements}>
                     <li className={styles.navList}>
-                        <a href="products/featuredItem" className={location === '/products/featuredItem' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
+                        <a href="/products/featuredItem" className={location === '/products/featuredItem' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
                             <FontAwesomeIcon icon={faHeart} className={styles.navIcon} />
                             <span className={styles.navP}>Featured</span>
                         </a>
