@@ -20,10 +20,6 @@ const DisplayCart = () => {
 
     const [discount, setDiscount] = useState(10);
 
-    // useEffect(() => {
-    //     console.log(document.getElementById('test').getBoundingClientRect());
-    // }, [])
-
     useEffect(() => {
         if (itemObj !== null){
             const shoppingItems = JSON.parse(itemObj);

@@ -11,7 +11,7 @@
     font-size: 25px;
     margin: 10px;
     text-transform: capitalize;
-    color: #ad6c4d;
+    color: black;
     font-family: 'Proza Libre', sans-serif;
     letter-spacing: 1px;
 }
@@ -83,7 +83,7 @@
 .categoryH2 {
     font-family: 'Proza Libre', sans-serif;
     font-size: 20px;
-    color: #ad6c4d;
+    color: black;
     margin: 10px 0; 
 }
 
@@ -320,15 +320,15 @@
     height: 35px;
     width: 90%;
     margin: 20px auto 0 auto;
-    border: 1px solid #b95b1d;
+    border: 1px solid black;
     border-radius: 5px;
     background-color: white;
-    color: #b95b1d;
+    color: black;
     cursor: pointer;
 }
 
 .filterBtn:hover {
-    background-color: #b95b1d;
+    background-color: black;
     color: white;
 }
 
@@ -339,7 +339,7 @@
 
 .filterBtn:disabled:hover {
     background-color: white;
-    color: #b95b1d;
+    color: black;
 }
 
 .notFoundContainer {

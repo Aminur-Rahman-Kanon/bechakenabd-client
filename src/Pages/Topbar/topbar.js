@@ -8,10 +8,13 @@ import styles from './topbar.module.css';
 import { ContextApi } from '../../App';
 import Backdrop from '../Others/Backdrop/backdrop';
 import { disableScroll } from '../Others/HelperFunction/helperFunction';
+import { matchRoute } from '../Others/HelperFunction/helperFunction';
 
 const Topbar = ({toggleSidedrawer}) => {
 
     const context = useContext(ContextApi);
+
+    const [products, setProducts] = useState([]);
 
     const [searchInput, setSearchInput] = useState('');
 
@@ -23,13 +26,17 @@ const Topbar = ({toggleSidedrawer}) => {
 
     const [backdrop, setBackdrop] = useState(false);
 
-    console.log(context.products);
+    useEffect(() => {
+        if (context.data) {
+            const data = Object.values(context.data).flat()
+            setProducts(data);
+        }
+    }, [context.data])
 
     useEffect(() => {
         startTransition(() => {
             if (searchInput.length){
-                const result = searchInput.length && context.products.filter(item => item.name.toLowerCase().slice(0, searchInput.length) === searchInput.toLowerCase());
-                console.log(result);
+                const result = searchInput.length && products.filter(item => item.name.toLowerCase().slice(0, searchInput.length) === searchInput.toLowerCase());
                 if (result.length){
                     setSearchResult(result);
                     setNoItemFound(true);
@@ -114,7 +121,7 @@ const Topbar = ({toggleSidedrawer}) => {
                             <p className={styles.itemCounter}>{`${searchResult.length} item found`}</p>
                         </div>
                         <div className={styles.searchInputResultContainer} style={searchInput.length ? {display: 'flex'}: {display: 'none'}}>
-                            {searchResult.length > 0 ? searchResult.map(item => <a href={`/products/${item.category}/${item.name}`} key={item._id} className={styles.searchResultItem}>
+                            {searchResult.length > 0 ? searchResult.map(item => <a href={`/products/${matchRoute(item.category)}/${item.name}`} key={item._id} className={styles.searchResultItem}>
                                 <div className={styles.searchResultImgContainer}>
                                     <img src={item.img[0]} alt={item.name} className={styles.searchResultImg}/>
                                 </div>

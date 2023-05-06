@@ -175,7 +175,7 @@ input::-webkit-inner-spin-button {
 }
 
 .displayStatusMsgH1 {
-    color: #c38aa8;
+    color: black;
     margin: 10px;
     text-align: center;
 }
@@ -190,14 +190,15 @@ input::-webkit-inner-spin-button {
     width: 200px;
     margin: 20px;
     border-radius: 5px;
-    border: 1px solid #c38aa8c9;
-    background-color: #c38aa8c9;
-    color: white;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
     cursor: pointer;
 }
 
 .displayStatusMsgBtn:hover {
-    background-color: #be7ea0c9;
+    background-color: black;
+    color: white;
 }
 
 @media (max-width: 768px) {

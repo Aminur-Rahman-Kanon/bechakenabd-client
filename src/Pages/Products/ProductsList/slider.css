@@ -13,7 +13,6 @@
 }
 
 .rangeslider__handle::after {
-    /* content: unset; */
     display: none;
 }
 

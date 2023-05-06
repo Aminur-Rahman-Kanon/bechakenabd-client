@@ -16,7 +16,7 @@ const Footer = () => {
                     <div className={styles.topSectionContainerItem}>
                         <p className={styles.headerP}><strong>Head Office:</strong>&nbsp;North Jatrabari, Dhaka 1236</p>
                         <p className={styles.headerP}><strong>Phone: </strong>&nbsp;01715450160</p>
-                        <p className={styles.headerP}><strong>Email: </strong>&nbsp;support@kharkhana.com</p>
+                        <p className={styles.headerP}><strong>Email: </strong>&nbsp;support@bechakenabd.com</p>
                     </div>
 
                     <div className={styles.socialLink}>
@@ -51,21 +51,22 @@ const Footer = () => {
                 <div className={styles.topSectionContainer}>
                     <h2 className={styles.headerH2}>CATALOG</h2>
                     <div className={styles.topSectionContainerItem}>
-                        <a href="/products/ear-rings" className={styles.topSectionLink}>Earrings</a>
-                        <a href="/products/necklace" className={styles.topSectionLink}>Nacklaces</a>
-                        <a href="/products/bracelet" className={styles.topSectionLink}>Bracelets</a>
-                        <a href="/products/finger-rings" className={styles.topSectionLink}>Finger Rings</a>
-                        <a href="/products/toe-rings" className={styles.topSectionLink}>Toe Rings</a>
-                        <a href="/products/nepali" className={styles.topSectionLink}>Nepali</a>
-                        <a href="/products/others" className={styles.topSectionLink}>Others</a>
+                        <a href="/products/spaceSaverItem" className={styles.topSectionLink}>Space Saver</a>
+                        <a href="/products/bluetoothHeadphoneItem" className={styles.topSectionLink}>Bluetooth Headphone</a>
+                        <a href="/products/fashionWalletItem" className={styles.topSectionLink}>Fashion Wallet</a>
+                        <a href="/products/smartWatchItem" className={styles.topSectionLink}>Smart Watch</a>
+                        <a href="/products/homeAndLivingItem" className={styles.topSectionLink}>Home and Living</a>
+                        <a href="/products/electronicsItem" className={styles.topSectionLink}>Electronics</a>
+                        <a href="/products/healthAndBeautyItem" className={styles.topSectionLink}>Health and Beauty</a>
+                        <a href="/products/fashionItem" className={styles.topSectionLink}>Fashion</a>
                     </div>
                 </div>
             </div>
             <div className={styles.bottomSection}>
                 <div className={styles.bottomSectionItem}>
-                    <p className={styles.copyright}>Copyright &copy; 2023 Karkhana</p>
+                    <p className={styles.copyright}>Copyright &copy; 2023 Bechakenabd</p>
                 </div>
-                <div className={styles.bottomSectionItem}>
+                <div className={`${styles.bottomSectionItem} ${styles.paymentImgContainer}`}>
                     <img src={bkash} className={styles.paymentImg} />
                     <img src={visa} className={styles.paymentImg}/>
                 </div>

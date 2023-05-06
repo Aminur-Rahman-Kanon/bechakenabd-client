@@ -103,7 +103,7 @@ const Register = () => {
         e.preventDefault();
         setSpinner(true);
 
-        fetch('https://karkhana-server.onrender.com/register', {
+        fetch('https://bechakenabd.onrender.com/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

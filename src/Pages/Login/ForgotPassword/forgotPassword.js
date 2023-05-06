@@ -58,7 +58,7 @@ function ForgotPassword() {
         e.preventDefault();
         setSpinner(true);
 
-        fetch('https://karkhana-server.onrender.com/forgot-password', {
+        fetch('https://bechakenabd.onrender.com/forgot-password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

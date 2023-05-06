@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import styles from './productsList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,8 +10,11 @@ import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 import { disableScroll } from "../../Others/HelperFunction/helperFunction";
 import './slider.css';
+import { ContextApi } from "../../../App";
 
 const ProductsList = () => {
+
+    const product = useContext(ContextApi);
 
     const params = useParams();
 
@@ -63,25 +66,10 @@ const ProductsList = () => {
     }
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-        if (params.hasOwnProperty("productId")){
-            fetch(`https://karkhana-server.onrender.com/products/${params.productId}`)
-            .then(res => res.json())
-            .then(result => {
-                if (result.status === 'success'){
-                    setProducts(result.data);
-                }
-                else {
-                    setStatus(result.status);
-                    setModal(true);
-                }
-            })
-            .catch(err => {
-                setError(true);
-                setModal(true);
-            });
+        if (product.data){
+            setProducts(product.data[params.productId]);
         }
-    }, [])
+    }, [product.data])
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -109,7 +97,8 @@ const ProductsList = () => {
     });
 
     if (products.length){
-        if (!itemNotFound &&filteredProducts.length){
+        //showing filtered items
+        if (!itemNotFound && filteredProducts.length){
             defaultView = filteredProducts.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
                     <a href={`/products/${params.productId}/${item.name}`} className={styles.productsLink}>
@@ -122,12 +111,12 @@ const ProductsList = () => {
                 </div>
             });
         }
-        else if (itemNotFound) {
+        else if (itemNotFound && !filteredProducts.length) {
             defaultView = <div className={styles.notFoundContainer}>
                 <h2 className={styles.notFoundHeader}>Nothing found based on your range</h2>
             </div>
         }
-
+        //showing all items
         else {
             defaultView = products.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
@@ -153,7 +142,6 @@ const ProductsList = () => {
     const filterItem = () => {
         if (priceFrom && priceTo) {
             const filteredData = products.filter(item => Number(item.price) >= priceFrom && Number(item.price) <= priceTo);
-            console.log(filteredData);
             if (filteredData.length){
                 setItemNotFound(false)
                 setFilteredProducts(filteredData);
@@ -172,6 +160,7 @@ const ProductsList = () => {
     const resetFilter = () => {
         setPriceFrom(0);
         setPriceTo(0);
+        setItemNotFound(false)
         setFilteredProducts([]);
     }
 
@@ -227,12 +216,14 @@ const ProductsList = () => {
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Categories</h2>
                         <ul className={styles.sidebarLists}>
-                            <a href="/products/Bracelet" className={styles.sidebarLink}><li className={params.productId === 'Bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
-                            <a href="/products/Finger Ring" className={styles.sidebarLink}><li className={params.productId === 'Finger Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
-                            <a href="/products/Ear Ring" className={styles.sidebarLink}><li className={params.productId === 'Ear Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
-                            <a href="/products/Necklace" className={styles.sidebarLink}><li className={params.productId === 'Necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
-                            <a href="/products/Toe Ring" className={styles.sidebarLink}><li className={params.productId === 'Toe Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
-                            <a href="/products/Other" className={styles.sidebarLink}><li className={params.productId === 'Other' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
+                            <a href="/products/spaceSaverItem" className={styles.sidebarLink}><li className={params.productId === 'spaceSaverItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Space Saver</li></a>
+                            <a href="/products/bluetoothHeadphoneItem" className={styles.sidebarLink}><li className={params.productId === 'bluetoothHeadphoneItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bluetooth Headphone</li></a>
+                            <a href="/products/fashionWalletItem" className={styles.sidebarLink}><li className={params.productId === 'fashionWalletItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Fashion Wallet</li></a>
+                            <a href="/products/smartWatchItem" className={styles.sidebarLink}><li className={params.productId === 'smartWatchItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Smart Watch</li></a>
+                            <a href="/products/homeAndLivingItem" className={styles.sidebarLink}><li className={params.productId === 'homeAndLivingItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Home and Living</li></a>
+                            <a href="/products/electronicsItem" className={styles.sidebarLink}><li className={params.productId === 'electronicsItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Electronics</li></a>
+                            <a href="/products/healthAndBeautyItem" className={styles.sidebarLink}><li className={params.productId === 'healthAndBeautyItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Health and Beauty</li></a>
+                            <a href="/products/fashionItem" className={styles.sidebarLink}><li className={params.productId === 'fashionItem' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Fashion</li></a>
                         </ul>
                     </div>
 
@@ -260,7 +251,7 @@ const ProductsList = () => {
                 </div>
 
                 <div className={styles.ProductsLists}>
-                    <h2 className={styles.productHeader}>{products.length ? params.productId : null}</h2>
+                    <h2 className={styles.productHeader}>{products.length ? products[0].category : null}</h2>
                     <div className={styles.productsDisplayContainer}>
                         {defaultView}
                     </div>

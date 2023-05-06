@@ -18,14 +18,14 @@ import { addToCart } from "../Others/HelperFunction/helperFunction";
 
 
 const itemCategories = [
-    {item: 1, img: furniture, name: 'Furniture'},
-    {item: 2, img: electronics, name: 'Electronics'},
-    {item: 3, img: speaker, name: 'Bluetooth Speaker'},
-    {item: 4, img: wallet, name: 'Wallet'},
-    {item: 5, img: watch, name: 'Smart Watch'},
-    {item: 6, img: beauty, name: 'Health and Beauty'},
-    {item: 6, img: fashion, name: 'Fashion'},
-    {item: 6, img: space, name: 'Space Saver'},
+    {item: 1, route: 'homeAndLivingItem', img: furniture, name: 'Furniture'},
+    {item: 2, route: 'electronicsItem', img: electronics, name: 'Electronics'},
+    {item: 3, route: 'bluetoothHeadphoneItem', img: speaker, name: 'Bluetooth Speaker'},
+    {item: 4, route: 'fashionWallet', img: wallet, name: 'Wallet'},
+    {item: 5, route: 'smartWatchItem', img: watch, name: 'Smart Watch'},
+    {item: 6, route: 'healthAndBeautyItem', img: beauty, name: 'Health and Beauty'},
+    {item: 7, route: 'fashionItem', img: fashion, name: 'Fashion'},
+    {item: 8, route: 'spaceSaverItem', img: space, name: 'Space Saver'},
 ]
 
 const Homepage = () => {
@@ -43,16 +43,13 @@ const Homepage = () => {
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
-        fetch('https://karkhana-server.onrender.com/products/initial-display').then(res => res.json()).then(result => {
-            if (result.status === 'success'){
-                console.log(result)
-                setFeaturedProducts(result.data.featuredItem);
-                setExclusiveProducts(result.data.exclusiveItem)
-                setTrendingProducts(result.data.trendingItem);
-                setTopSeller(result.data.topSellerItem)
-            }
-        }).catch(err => console.log(err))
-    }, [])
+        if (context.data) {
+            setFeaturedProducts(context.data.featuredItem);
+            setExclusiveProducts(context.data.exclusiveItem);
+            setTopSeller(context.data.topSellerItem);
+            setTrendingProducts(context.data.trendingItem)
+        }
+    }, [context.data])
 
     let displayFeaturedProducts = Array.from(Array(6).keys()).map(item => {
         return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
@@ -161,7 +158,7 @@ const Homepage = () => {
     }
 
     let itemCategory = itemCategories.map(item => {
-        return <Link key={item.item} to={`/products/${item.name}`} className={styles.itemCategory}>
+        return <Link key={item.item} to={`/products/${item.route}`} className={styles.itemCategory}>
             <div className={styles.itemCategoryImgContainer}>
                 <img src={item.img} alt={item.name} className={styles.itemCategoryImg}/>
             </div>
@@ -182,7 +179,7 @@ const Homepage = () => {
                     <div className={styles.exclusiveItemP}>{exclusiveItem.details}</div>
                     <div className={styles.exclusiveItemPrice}>	&#2547; {exclusiveItem.price}</div>
                 </div>
-                <Link to={`/products/Exclusive/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
+                <Link to={`/products/exclusiveItem/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
             </div>
         })
     }

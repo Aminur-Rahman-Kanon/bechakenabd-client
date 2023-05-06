@@ -2,7 +2,7 @@
 
 .footerMain {
     width: 100%;
-    background-color: #ab948f;
+    background-color: #31404a;
 }
 
 .topSection {
@@ -92,6 +92,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.paymentImgContainer {
+    background-color: #ffffffd4;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .copyright {

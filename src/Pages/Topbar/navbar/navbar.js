@@ -4,13 +4,14 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faStore, faGem, faRss, faHeart, faDesktop } from '@fortawesome/free-solid-svg-icons';
 import styles from './navbar.module.css';
-import bracelet from '../../../Assets/bracelet.jpg';
-import earRing from '../../../Assets/earRing.jpg';
-import fingerRing from '../../../Assets/fingerRing.jpg';
-import necklace from '../../../Assets/necklace.jpg';
-import toeRing from '../../../Assets/toeRing.jpg';
-import nepali from '../../../Assets/nepali.jpg';
-import others from '../../../Assets/other.jpg';
+import electronics from '../../../Assets/electronics.jpg';
+import fashion from '../../../Assets/fashion.jpg';
+import furniture from '../../../Assets/furniture.jpg';
+import space from '../../../Assets/space.jpg';
+import speaker from '../../../Assets/speaker.jpg';
+import wallet from '../../../Assets/wallet.jpg';
+import watch from '../../../Assets/watch.jpg';
+import beauty from '../../../Assets/beauty.jpg';
 
 
 const Navbar = () => {
@@ -30,7 +31,7 @@ const Navbar = () => {
                         </a>
                     </li>
                     <li className={styles.navList}>
-                        <a href="/products/Latest" className={location === '/products/Latest' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
+                        <a href="/products/latestItem" className={location === '/products/latestItem' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
                             <FontAwesomeIcon icon={faStore} className={styles.navIcon} />
                             <span className={styles.navP}>Latest</span>
                         </a>
@@ -38,49 +39,55 @@ const Navbar = () => {
                     <li className={styles.navList} id={styles.parentNavItem}>
                         <div className={styles.navItem}>
                             <FontAwesomeIcon icon={faGem} className={styles.navIcon} />
-                            <span className={splitLocation[1] === 'products' && splitLocation[2] !== 'Latest' && splitLocation[2] !== 'Featured' ? `${styles.navP} ${styles.navActive}` : styles.navP}>Products</span>
+                            <span className={splitLocation[1] === 'products' && splitLocation[2] !== 'latestItem' && splitLocation[2] !== 'featuredItem' ? `${styles.navP} ${styles.navActive}` : styles.navP}>Products</span>
                         </div>
                         <ul className={styles.childNavElement}>
                             <li className={styles.childNavList}>
-                                <a href='/products/Bracelet' className={splitLocation[2] ? splitLocation[2] === 'Bracelet' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
-                                    <img src={bracelet} alt="bracelet" className={styles.childNavImg}/>
-                                    <p className={styles.childNavP}>Bracelets</p>
+                                <a href='/products/spaceSaverItem' className={splitLocation[2] ? splitLocation[2] === 'spaceSaverItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={space} alt="space saver" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Space Saver</p>
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/Finger Ring' className={splitLocation[2] ? splitLocation[2] === 'Finger Ring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
-                                    <img src={fingerRing} alt="finger ring" className={styles.childNavImg}/>
-                                    <p className={styles.childNavP}>Finger Rings</p>
+                                <a href='/products/bluetoothHeadphoneItem' className={splitLocation[2] ? splitLocation[2] === 'bluetoothHeadphoneItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={speaker} alt="bluetooth headphone" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Bluetooth Headphone</p>
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/Ear Ring' className={splitLocation[2] ? splitLocation[2] === 'Ear Ring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
-                                    <img src={earRing} alt="ear ring" className={styles.childNavImg}/>
-                                    <p className={styles.childNavP}>Ear Rings</p>
+                                <a href='/products/fashionWalletItem' className={splitLocation[2] ? splitLocation[2] === 'fashioWalletItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={wallet} alt="wallet" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Fashion Wallet</p>
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/Necklace' className={splitLocation[2] ? splitLocation[2] === 'Necklace' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
-                                    <img src={necklace} alt="necklace" className={styles.childNavImg}/>
-                                    <p className={styles.childNavP}>Necklaces</p>
+                                <a href='/products/smartWatchItem' className={splitLocation[2] ? splitLocation[2] === 'smartWatchItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={watch} alt="smart watch" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Smart Watch</p>
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/Toe Ring' className={splitLocation[2] ? splitLocation[2] === 'Toe Ring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
-                                    <img src={toeRing} alt="toe ring" className={styles.childNavImg}/>
-                                    <p className={styles.childNavP}>Toe Rings</p>
+                                <a href='/products/homeAndLivingItem' className={splitLocation[2] ? splitLocation[2] === 'homeAndLivingItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={furniture} alt="home and living" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Home and Living</p>
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/Nepali' className={splitLocation[2] ? splitLocation[2] === 'Nepali' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
-                                    <img src={nepali} alt="nepali" className={styles.childNavImg}/>
-                                    <p className={styles.childNavP}>Nepali</p>
+                                <a href='/products/electronicsItem' className={splitLocation[2] ? splitLocation[2] === 'electronicsItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={electronics} alt="electronics" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Electronics</p>
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/Other' className={splitLocation[2] ? splitLocation[2] === 'Other' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
-                                    <img src={others} alt="other" className={styles.childNavImg}/>
-                                    <p className={styles.childNavP}>Others</p>
+                                <a href='/products/healthAndBeautyItem' className={splitLocation[2] ? splitLocation[2] === 'healthAndBeautyItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={beauty} alt="other" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Health and Beauty</p>
+                                </a>
+                            </li>
+                            <li className={styles.childNavList}>
+                                <a href='/products/fashionItem' className={splitLocation[2] ? splitLocation[2] === 'fashionItem' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                    <img src={fashion} alt="fashion" className={styles.childNavImg}/>
+                                    <p className={styles.childNavP}>Fashion</p>
                                 </a>
                             </li>
                         </ul>
@@ -95,7 +102,7 @@ const Navbar = () => {
             <div className={styles.navElements}>
                 <ul className={styles.navElement} id={styles.rightElements}>
                     <li className={styles.navList}>
-                        <a href="/products/Featured" className={location === '/products/Featured' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
+                        <a href="/products/featuredItem" className={location === '/products/featuredItem' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
                             <FontAwesomeIcon icon={faHeart} className={styles.navIcon} />
                             <span className={styles.navP}>Featured</span>
                         </a>

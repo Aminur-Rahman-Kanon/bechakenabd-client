@@ -67,7 +67,8 @@
 }
 
 .childNavItem.childActive {
-    color: #102e44;
+    box-shadow: 0 0 15px 5px lightgray;
+    border-radius: 10px;
 }
 
 .navIcon {

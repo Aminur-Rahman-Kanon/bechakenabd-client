@@ -88,3 +88,36 @@ export const disableScroll = () => {
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     window.onscroll = () => window.scrollTo(scrollLeft, scrollTop)
 }
+
+export const matchRoute = (id) => {
+    switch(id) {
+        case 'Space Saver':
+            return 'spaceSaverItem';
+        case 'Bluetooth Headphone':
+            return 'bluetoothHeadphoneItem';
+        case 'Fashion Wallet':
+            return 'fashionWalletItem';
+        case 'Smart Watch':
+            return 'smartWatchItem';
+        case 'Home and Living':
+            return 'homeAndLivingItem';
+        case 'Electronics':
+            return 'electronicsItem';
+        case 'Health and Beauty':
+            return 'healthAndBeautyItem';
+        case 'Fashion':
+            return 'fashionItem';
+        case 'Featured':
+            return 'featuredItem';
+        case 'Trending':
+            return 'trendingItem';
+        case 'Top Seller':
+            return 'topSellerItem';
+        case 'Exclusive':
+            return 'exclusiveItem';
+        case 'Latest':
+            return 'latestItem';
+        default:
+            return '';
+    }
+}
