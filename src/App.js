@@ -17,6 +17,7 @@ import Checkout from './Pages/Checkout/checkout';
 import ForgotPassword from './Pages/Login/ForgotPassword/forgotPassword';
 import AboutUs from './Pages/AboutUs/aboutUs';
 import Blog from './Pages/Blog/blog';
+import BlogProductDisplay from './Pages/Blog/BlogProductDisplay/blogProductDisplay';
 import { useQuery, useQueryClient } from 'react-query';
 
 export const ContextApi = createContext(null);
@@ -32,7 +33,7 @@ function App() {
   const { data, error, isLoading, isError } = useQuery(['data'], async () => {
     const data = await fetch('https://bechakenabd.onrender.com/products/get-products').then(res => res.json()).then(result => result.data).catch(err => err);
     return data;
-  }, { staleTime: 300000 })
+  }, { staleTime: 600000 })
 
   useEffect(() => {
     if (backdrop) {
@@ -72,6 +73,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='/blog' element={<Blog />} />
+          <Route path='/blog/:blogId' element={<BlogProductDisplay />}/>
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
         <Footer />

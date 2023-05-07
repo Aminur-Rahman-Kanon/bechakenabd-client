@@ -1,0 +1,113 @@
+.blogProductDisplayContainer {
+    width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.displayBlogItem {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayBlogImgContainer {
+    width: 95%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayBlogImg {
+    width: 100%;
+    max-height: 735px;
+}
+
+.imgCollectionContainer {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgCollections {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0.5;
+}
+
+.imgCollections.imgActive {
+    opacity: 1;
+    box-shadow: 0 0 12px 5px lightgray;
+}
+
+.imgCollection {
+    width: 100%;
+    height: 100%;
+}
+
+.displayBlogDetailsContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayBlogH3 {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.detailsContainer {
+    width: 90%;
+    text-align: left;
+    line-height: 22px;
+}
+
+.blogLink {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 200px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+}
+
+.blogLink:hover {
+    background-color: black;
+    color: white;
+}
+
+.defaultBlogImgContainer, .defaultBlogDetailsContainer {
+    width: 90%;
+    height: 400px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 238, 238);
+}
+
+.spinner {
+    font-size: 22px;
+    color: rgb(224, 118, 24);
+}
+
+@media (max-width: 432px) {
+    .blogLink {
+        width: 95%;
+    }
+}

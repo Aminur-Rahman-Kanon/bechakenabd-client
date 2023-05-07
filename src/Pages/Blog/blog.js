@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styles from './blog.module.css';
 import DefaultView from './DefaultView/defaultView';
+import { ContextApi } from '../../App';
 
 function Blog() {
+
+    const blog = useContext(ContextApi);
 
     const [blogs, setBlogs] = useState([]);
 
@@ -33,16 +36,15 @@ function Blog() {
 
         return () => clearTimeout(timer);
     }, [email])
+    console.log(blog);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-        fetch('https://karkhana-server.onrender.com/get-blogs').then(res => res.json())
-        .then(data => {
-            if (data.status === 'success'){
-                setBlogs(data.data);
+        if (blog.data !== undefined){
+            if (blog.data.hasOwnProperty('blogItem')){
+                setBlogs(blog.data['blogItem']);
             }
-        }).catch(err => console.log(err));
-    }, [])
+        }
+    }, [blog.data])
 
     let primaryDisplayBlogs = null;
 
@@ -50,30 +52,30 @@ function Blog() {
         primaryDisplayBlogs = <div className={styles.blogMain}>
             <div className={styles.blogHeaderContainer}>
                 <div className={styles.mainBlog1}>
-                    <a href='' className={styles.mainBlogImgContainer}>
+                    <a href={`/blog/${blogs[0]._id}`} className={styles.mainBlogImgContainer}>
                         <img src={blogs[0].img} alt={blogs[0].title} className={styles.mainBlogImg}/>
                     </a>
                     <div className={styles.mainBlogDetailsContainer}>
-                        <a href="" className={styles.bottomSection1Link}>{blogs[0].title}</a>
+                        <a href={`/blog/${blogs[0]._id}`} className={styles.bottomSection1Link}>{blogs[0].title}</a>
                         <p className={styles.blogHeaderP}>{blogs[0].date}</p>
                     </div>
                 </div>
                 <div className={styles.mainBlog2}>
                     <div className={styles.blog2Item}>
-                        <a href='' className={styles.mainBlogImgContainer}>
+                        <a href={`/blog/${blogs[1]._id}`} className={styles.mainBlogImgContainer}>
                             <img src={blogs[1].img} alt={blogs[1].title} className={styles.mainBlogImg}/>
                         </a>
                         <div className={styles.mainBlogDetailsContainer}>
-                            <a href="" className={styles.blogHeaderH3}>{blogs[1].title}</a>
+                            <a href={`/blog/${blogs[1]._id}`} className={styles.blogHeaderH3}>{blogs[1].title}</a>
                             <p className={styles.blogHeaderP}>{blogs[1].date}</p>
                         </div>
                     </div>
                     <div className={styles.blog2Item}>
-                        <a href='' className={styles.mainBlogImgContainer}>
+                        <a href={`/blog/${blogs[2]._id}`} className={styles.mainBlogImgContainer}>
                             <img src={blogs[2].img} alt={blogs[2].title} className={styles.mainBlogImg}/>
                         </a>
                         <div className={styles.mainBlogDetailsContainer}>
-                            <a href="" className={styles.blogHeaderH3}>{blogs[2].title}</a>
+                            <a href={`/blog/${blogs[2]._id}`} className={styles.blogHeaderH3}>{blogs[2].title}</a>
                             <p className={styles.blogHeaderP}>{blogs[2].date}</p>
                         </div>
                     </div>
@@ -86,7 +88,7 @@ function Blog() {
                     <div className={styles.middleSectionPosts}>
                         {blogs.slice(3, 7).map(item => {
                             return <div key={item._id} className={styles.middleSectionPost}>
-                                <a href="" className={styles.middleSectionImgContainer}>
+                                <a href={`/blog/${item._id}`} className={styles.middleSectionImgContainer}>
                                     <img src={item.img} alt={item.title} className={styles.middleSectionImg} />
                                 </a>
                                 <div className={styles.middleSectionDetailsContainer}>
@@ -102,11 +104,11 @@ function Blog() {
                 <div className={styles.middleSectionItem2}>
                     <div className={styles.middleSectionLabel}>Editors Pick</div>
                     <div className={styles.middleItem2Header}>
-                        <a href="" className={styles.middleItem2ImgContainer}>
+                        <a href={`/blog/${blogs[7]._id}`} className={styles.middleItem2ImgContainer}>
                             <img src={blogs[7].img} alt={blogs[7].title} className={styles.middleItem2Img} />
                         </a>
                         <div className={styles.middleItem2HeaderDetails}>
-                            <a href="" className={styles.middleSectionLink}>{blogs[7].title}</a>
+                            <a href={`/blog/${blogs[7]._id}`} className={styles.middleSectionLink}>{blogs[7].title}</a>
                             <p className={styles.middleSectionDate}>{blogs[7].date}</p>
                             <p className={styles.middleItem2Details}>{blogs[7].details}</p>
                         </div>
@@ -114,11 +116,11 @@ function Blog() {
                     <div className={styles.middleItem2Outro}>
                         {blogs.slice(8, 11).map(item => {
                             return <div key={item._id} className={styles.outroItemContainer}>
-                                <a hrf="" className={styles.outroImgContainer}>
+                                <a hrf={`/blog/${item._id}`} className={styles.outroImgContainer}>
                                     <img src={item.img} alt={item.title} className={styles.outroImg} />
                                 </a>
                                 <div className={styles.outroDetailsContainer}>
-                                    <a href="" className={styles.middleSectionLink}>{item.title}</a>
+                                    <a href={`/blog/${item._id}`} className={styles.middleSectionLink}>{item.title}</a>
                                     <p className={styles.middleSectionDate}>{item.date}</p>
                                 </div>
                             </div>
@@ -132,32 +134,32 @@ function Blog() {
                     <div className={styles.middleSectionLabel}>Popular Post</div>
                     <div className={styles.bottomSection1Items}>
                         <div className={styles.bottomSectionItem1}>
-                            <a href='' className={styles.mainBlogImgContainer}>
+                            <a href={`/blog/${blogs[11]._id}`} className={styles.mainBlogImgContainer}>
                                 <img src={blogs[11].img} alt={blogs[11].title} className={styles.bottomSection1Img} />
                             </a>
                             <div className={styles.bottomSection1Details}>
-                                <a href="" className={styles.bottomSection1Link}>{blogs[11].title}</a>
+                                <a href={`/blog/${blogs[11]._id}`} className={styles.bottomSection1Link}>{blogs[11].title}</a>
                                 <p className={styles.blogHeaderP}>{blogs[11].date}</p>
                             </div>
                         </div>
                         <div className={styles.bottomSectionItem2}>
                             <div className={styles.bottomSectionItem2E1}>
-                                <a href="" className={styles.bottomSectionItem2E1ImgContainer}>
+                                <a href={`/blog/${blogs[12]._id}`} className={styles.bottomSectionItem2E1ImgContainer}>
                                     <img src={blogs[12].img} alt={blogs[12].title} className={styles.bottomSection2Img} />
                                 </a>
                                 <div className={styles.bottomSection2Details}>
-                                    <a href="" className={styles.bottomSection2Link}>{blogs[10].title}</a>
+                                    <a href={`/blog/${blogs[12]._id}`} className={styles.bottomSection2Link}>{blogs[10].title}</a>
                                     <p className={styles.blogHeaderP}>{blogs[12].date}</p>
                                     <p className={styles.blogHeaderP}>{blogs[12].details}</p>
                                 </div>
                             </div>
 
                             <div className={styles.bottomSectionItem2E1}>
-                                <a href="" className={styles.bottomSectionItem2E1ImgContainer}>
+                                <a href={`/blog/${blogs[13]._id}`} className={styles.bottomSectionItem2E1ImgContainer}>
                                     <img src={blogs[13].img} alt={blogs[13].title} className={styles.bottomSection2Img} />
                                 </a>
                                 <div className={styles.bottomSection2Details}>
-                                    <a href="" className={styles.bottomSection2Link}>{blogs[13].title}</a>
+                                    <a href={`/blog/${blogs[13]._id}`} className={styles.bottomSection2Link}>{blogs[13].title}</a>
                                     <p className={styles.blogHeaderP}>{blogs[13].date}</p>
                                     <p className={styles.blogHeaderP}>{blogs[13].details}</p>
                                 </div>

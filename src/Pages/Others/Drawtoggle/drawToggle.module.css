@@ -10,9 +10,9 @@
     width: 22px;
     height: 1px;
     margin: 2px 0;
-    border: 1px solid #ca9876;
+    border: 1px solid gray;
     border-radius: 10px;
-    background-color: #ca9876;
+    background-color: gray;
 }
 
 @media (max-width: 1045px) {
