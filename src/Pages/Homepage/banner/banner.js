@@ -21,7 +21,7 @@ const bannerItems = [
     {id: 5, img: watch, firstHeader: "Time is money", secondHeader: "Have you all the time"},
     {id: 6, img: beauty, firstHeader: "Health and Beauty", secondHeader: "Present yourself how you want"},
     {id: 7, img: space, firstHeader: "Space Saver", secondHeader: "Make the most of your home"},
-    {id: 8, img: beauty, firstHeader: "Fashion is Art", secondHeader: "Be yourself"},
+    {id: 8, img: fashion, firstHeader: "Fashion is Art", secondHeader: "Be yourself"},
 ]
 
 const Banner = (img) => {
